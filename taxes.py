@@ -16,7 +16,7 @@ taxesDictionary = {"DE" : 20,
   "BG" : 21,
   "DK" : 21,
   "FI" : 17,
-  "SK" : 18,
+  "SK" : 10,
   "IE" : 21,
   "HR" : 23,
   "LT" : 23,
@@ -28,6 +28,8 @@ taxesDictionary = {"DE" : 20,
   "MT" : 20}
 
 def getTotal(total, countryCode):
-  return total + total * (taxesDictionary[countryCode] / 100)
-
+  tax = taxesDictionary[countryCode]
+  if total > 2000 and countryCode == "SK":
+    tax = 20
+  return total + total * (tax / 100)
 
