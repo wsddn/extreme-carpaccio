@@ -3,7 +3,7 @@ Carpaccio server using Flask.
 To start the kata, complete the order() function
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, abort
 from taxes import getTotal as calc_tax
 from reductions import reduce_total as calc_reduction
 import re
@@ -13,16 +13,24 @@ app = Flask(__name__)
 #Main function of the kata
 @app.route("/order", methods=['POST'])
 def order():
-    # order is a dict
-    order = request.get_json()
+    try:
+        # order is a dict
+        order = request.get_json()
+        print(order)
 
-    total = sum([a * b for (a,b) in zip(order['prices'], order['quantities'])])
-    post_tax = calc_tax(total, order['country'])
-    post_reduction = calc_reduction(post_tax, order['reduction'])
+        if len(order['prices']) is not len(order['quantities']):
+            raise Exception()
 
-    result = {'total': post_reduction}
-    # You should probably comment this line before you register your client
-    return jsonify(result)
+        total = sum([a * b for (a,b) in zip(order['prices'], order['quantities'])])
+        post_tax = calc_tax(total, order['country'])
+        post_reduction = calc_reduction(post_tax, order['reduction'])
+
+        result = {'total': post_reduction}
+        # You should probably comment this line before you register your client
+        return jsonify(result)
+    except:
+        print('ABORT')
+        abort(400)
 
 #Server's feedback to your work.
 @app.route("/feedback", methods=['POST'])
