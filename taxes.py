@@ -28,5 +28,5 @@ taxesDictionary = {"DE" : 20,
   "MT" : 20}
 
 def getTotal(total, countryCode):
-  return total + total * 1.0 / taxesDictionary[countryCode]
+  return total - total * 1.0 / taxesDictionary[countryCode]
 
