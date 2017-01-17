@@ -20,6 +20,8 @@ def reduce_total(after_tax, reduction_type):
         for key in sorted(standard_reductions.keys(), reverse=True):
             if after_tax >= key:
                 return (1 - standard_reductions[key]) * after_tax
+    if reduction_type == "HALF PRICE":
+        return after_tax / 2
 
 
     return after_tax
