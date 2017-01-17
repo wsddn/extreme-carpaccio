@@ -14,6 +14,8 @@ standard_reductions = {
 }
 
 def reduce_total(after_tax, reduction_type):
+    print("REDUCTION TYPE " + reduction_type)
+
     if reduction_type == "STANDARD":
         for key in sorted(standard_reductions.keys(), reverse=True):
             if after_tax >= key:
