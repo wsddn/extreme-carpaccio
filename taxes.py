@@ -31,5 +31,7 @@ def getTotal(total, countryCode):
   tax = taxesDictionary[countryCode]
   if total > 2000 and countryCode == "SK":
     tax = 20
+  if total <= 11000 and countryCode == "UK":
+    return total
   return total + total * (tax / 100)
 
