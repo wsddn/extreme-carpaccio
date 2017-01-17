@@ -14,11 +14,12 @@ app = Flask(__name__)
 @app.route("/order", methods=['POST'])
 def order():
     try:
-
         # order is a dict
         order = request.get_json()
         print(order)
 
+        if len(order['prices']) is not len(order['quantities']):
+            raise Exception()
 
         total = sum([a * b for (a,b) in zip(order['prices'], order['quantities'])])
         post_tax = calc_tax(total, order['country'])
@@ -28,6 +29,7 @@ def order():
         # You should probably comment this line before you register your client
         return jsonify(result)
     except:
+        print('ABORT')
         abort(400)
 
 #Server's feedback to your work.
