@@ -1,4 +1,4 @@
-#!/home/wsddn/imperial/cs/first/palantir/env/bin/python2
+#!/home/wsddn/imperial/cs/first/palantir/env/bin/python3
 
 # -*- coding: utf-8 -*-
 import re
