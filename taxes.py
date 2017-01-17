@@ -1,4 +1,4 @@
-taxesDictionary = {"DE" : 20,
+taxesDictionary = {"DE" : 0,
   "UK" : 21,
   "FR" : 20,
   "IT" : 25,
