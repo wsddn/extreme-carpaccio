@@ -28,7 +28,7 @@ def order():
         # You should probably comment this line before you register your client
         return jsonify(result)
     except:
-        abort(500)
+        abort(400)
 
 #Server's feedback to your work.
 @app.route("/feedback", methods=['POST'])
